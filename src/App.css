@@ -40,3 +40,56 @@
 .read-the-docs {
   color: #888;
 }
+
+/* Products List */
+.products-container {
+  padding: 20px;
+}
+
+.search-input {
+  padding: 8px;
+  margin-bottom: 20px;
+  width: 300px;
+  font-size: 16px;
+}
+
+.error-message {
+  color: red;
+}
+
+.products-grid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 20px;
+  transition: opacity 0.3s;
+}
+
+.products-grid.fetching {
+  opacity: 0.5;
+}
+
+.product-card {
+  border: 1px solid #ddd;
+  padding: 10px;
+  border-radius: 8px;
+}
+
+.product-thumbnail {
+  height: 100px;
+}
+
+.product-link {
+  color: blue;
+}
+
+/* Product Detail */
+.product-detail-container {
+  padding: 20px;
+  max-width: 600px;
+  margin: 0 auto;
+  text-align: left;
+}
+
+.product-detail-image {
+  width: 100%;
+}
