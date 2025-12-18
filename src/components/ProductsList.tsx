@@ -1,7 +1,8 @@
 import { useQuery, keepPreviousData } from "@tanstack/react-query";
 import { Link } from "react-router-dom";
-import { useState } from "react";
+import { useState, useEffect } from "react";
 import { fetchProducts } from "../api/products";
+import { useNotificationStore } from "../stores/notifications";
 
 interface Product {
   id: number;
@@ -12,12 +13,25 @@ interface Product {
 
 export const ProductsList = () => {
   const [search, setSearch] = useState("");
+  const { addNotification } = useNotificationStore();
 
-  const { data, isLoading, error, isFetching } = useQuery({
+  const { data, isLoading, error, isFetching, isSuccess } = useQuery({
     queryKey: ["products", search],
     queryFn: () => fetchProducts(search),
     placeholderData: keepPreviousData,
   });
+
+  useEffect(() => {
+    if (error) {
+      addNotification("error", `Failed to load products: ${error.message}`);
+    }
+  }, [error, addNotification]);
+
+  useEffect(() => {
+    if (isSuccess && !isFetching) {
+      addNotification("success", "Products loaded successfully!");
+    }
+  }, [isSuccess, isFetching, addNotification]);
 
   return (
     <div className="products-container">
