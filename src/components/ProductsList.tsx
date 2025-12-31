@@ -61,7 +61,7 @@ export const ProductsList = () => {
 
   const actionBodyTemplate = (product: Product) => {
     return (
-      <div style={{ display: "flex", gap: "0.5rem" }}>
+      <div style={{ display: "flex", gap: "0.5rem" }} data-testid="product-row">
         <Link to={`/products/${product.id}`}>
           <Button
             icon="pi pi-search"

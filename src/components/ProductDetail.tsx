@@ -28,7 +28,7 @@ export const ProductDetail = () => {
     <div className="product-detail-container">
       <Link to="/products">← {t("details.back")}</Link>
 
-      <h1>{data.title}</h1>
+      <h1 data-testid="product-title">{data.title}</h1>
       <img
         src={data.thumbnail}
         alt={data.title}
