@@ -3,6 +3,7 @@ import { Link } from "react-router-dom";
 import { useState, useEffect } from "react";
 import { fetchProducts } from "../api/products";
 import { useNotificationStore } from "../stores/notifications";
+import { useCartStore } from "../stores/cart";
 
 interface Product {
   id: number;
@@ -14,6 +15,7 @@ interface Product {
 export const ProductsList = () => {
   const [search, setSearch] = useState("");
   const { addNotification } = useNotificationStore();
+  const { addToCart } = useCartStore();
 
   const { data, isLoading, error, isFetching, isSuccess } = useQuery({
     queryKey: ["products", search],
@@ -29,9 +31,14 @@ export const ProductsList = () => {
 
   useEffect(() => {
     if (isSuccess && !isFetching) {
-      addNotification("success", "Products loaded successfully!");
+      // addNotification("success", "Products loaded successfully!");
     }
   }, [isSuccess, isFetching, addNotification]);
+
+  const handleAddToCart = (product: Product) => {
+    addToCart(product);
+    addNotification("success", `Added "${product.title}" to cart`);
+  };
 
   return (
     <div className="products-container">
@@ -61,9 +68,14 @@ export const ProductsList = () => {
               <h3>{product.title}</h3>
               <p>Price: ${product.price}</p>
 
-              <Link to={`/products/${product.id}`} className="product-link">
-                More details →
-              </Link>
+              <div style={{ display: "flex", gap: "10px", marginTop: "10px" }}>
+                <Link to={`/products/${product.id}`} className="product-link">
+                  More details →
+                </Link>
+                <button onClick={() => handleAddToCart(product)}>
+                  Add to Cart
+                </button>
+              </div>
             </div>
           ))}
         </div>

@@ -1,34 +1,37 @@
 import { useSidebar } from "../context/SidebarContext";
+import { useCartStore } from "../stores/cart";
 
 export const Sidebar = () => {
   const { isOpen, close } = useSidebar();
+  const { items, removeFromCart, totalPrice } = useCartStore();
 
   if (!isOpen) return null;
 
   return (
-    <div
-      style={{
-        position: "fixed",
-        top: 0,
-        right: 0,
-        width: "300px",
-        height: "100%",
-        backgroundColor: "#fff",
-        boxShadow: "-2px 0 5px rgba(0,0,0,0.5)",
-        padding: "20px",
-        zIndex: 1000,
-      }}
-    >
-      <button onClick={close} style={{ marginBottom: "20px" }}>
+    <div className="sidebar-overlay">
+      <button onClick={close} className="sidebar-close-btn">
         Close X
       </button>
-      <h2>Sidebar</h2>
-      <p>This is a global sidebar managed by Context.</p>
-      <ul>
-        <li>Menu Item 1</li>
-        <li>Menu Item 2</li>
-        <li>Menu Item 3</li>
-      </ul>
+      <h2>Shopping Cart</h2>
+
+      {items.length === 0 ? (
+        <p className="cart-empty">Your cart is empty.</p>
+      ) : (
+        <>
+          <div style={{ flex: 1, overflowY: "auto" }}>
+            {items.map((item) => (
+              <div key={item.id} className="cart-item">
+                <div>
+                  <strong>{item.title}</strong>
+                  <br />${item.price} x {item.quantity}
+                </div>
+                <button onClick={() => removeFromCart(item.id)}>Remove</button>
+              </div>
+            ))}
+          </div>
+          <div className="cart-total">Total: ${totalPrice().toFixed(2)}</div>
+        </>
+      )}
     </div>
   );
 };
