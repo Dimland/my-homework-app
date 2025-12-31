@@ -1,0 +1,33 @@
+{
+    "header": {
+        "title": "My Shop",
+        "menu_about": "About",
+        "menu_products": "Products",
+        "language": "Language",
+        "theme": "Theme"
+    },
+    "buttons": {
+        "viewDetails": "View Details",
+        "addToCart": "Add to Cart"
+    },
+    "status": {
+        "loading": "Loading...",
+        "error": "Error: {{message}}"
+    },
+    "home": {
+        "title": "User card",
+        "hello": "Hello, <1>{{name}}</1>!",
+        "enterName": "Enter your name:"
+    },
+    "about": {
+        "title": "About",
+        "description": "This is my learning application for studying React."
+    },
+    "sidebar": {
+        "title": "Shopping Cart",
+        "close": "Close X",
+        "empty": "Your cart is empty.",
+        "remove": "Remove",
+        "total": "Total: {{price}}"
+    }
+}

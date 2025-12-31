@@ -1,13 +1,12 @@
 import { useState, useEffect } from "react";
+import { useTranslation, Trans } from "react-i18next";
 
 export const UserGreeter = () => {
-
+  const { t } = useTranslation("common");
   // }
   const [name, setName] = useState<string>("Quest");
 
-
   useEffect(() => {
-
     document.title = `Hello, ${name}`;
   }, [name]);
 
@@ -24,14 +23,16 @@ export const UserGreeter = () => {
         maxWidth: "400px",
       }}
     >
-      <h2>User card</h2>
+      <h2>{t("home.title")}</h2>
 
       <p>
-        Hello, <strong>{name}</strong>!
+        <Trans i18nKey="home.hello" values={{ name }} ns="common">
+          Hello, <strong>{name}</strong>!
+        </Trans>
       </p>
 
       <label>
-        Enter your name: <br />
+        {t("home.enterName")} <br />
         <input
           type="text"
           value={name}

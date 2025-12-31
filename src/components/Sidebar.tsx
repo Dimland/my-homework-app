@@ -1,21 +1,28 @@
 import { useSidebar } from "../context/SidebarContext";
 import { useCartStore } from "../stores/cart";
+import { useTranslation } from "react-i18next";
 
 export const Sidebar = () => {
   const { isOpen, close } = useSidebar();
   const { items, removeFromCart, totalPrice } = useCartStore();
+  const { t, i18n } = useTranslation("common");
 
   if (!isOpen) return null;
+
+  const formattedTotal = new Intl.NumberFormat(i18n.language, {
+    style: "currency",
+    currency: "USD",
+  }).format(totalPrice());
 
   return (
     <div className="sidebar-overlay">
       <button onClick={close} className="sidebar-close-btn">
-        Close X
+        {t("sidebar.close")}
       </button>
-      <h2>Shopping Cart</h2>
+      <h2>{t("sidebar.title")}</h2>
 
       {items.length === 0 ? (
-        <p className="cart-empty">Your cart is empty.</p>
+        <p className="cart-empty">{t("sidebar.empty")}</p>
       ) : (
         <>
           <div style={{ flex: 1, overflowY: "auto" }}>
@@ -25,11 +32,15 @@ export const Sidebar = () => {
                   <strong>{item.title}</strong>
                   <br />${item.price} x {item.quantity}
                 </div>
-                <button onClick={() => removeFromCart(item.id)}>Remove</button>
+                <button onClick={() => removeFromCart(item.id)}>
+                  {t("sidebar.remove")}
+                </button>
               </div>
             ))}
           </div>
-          <div className="cart-total">Total: ${totalPrice().toFixed(2)}</div>
+          <div className="cart-total">
+            {t("sidebar.total", { price: formattedTotal })}
+          </div>
         </>
       )}
     </div>
