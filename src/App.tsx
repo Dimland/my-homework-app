@@ -6,6 +6,18 @@ import { UserGreeter } from "./components/UserGreeter";
 import { About } from "./components/About";
 import { ProductsList } from "./components/ProductsList";
 import { ProductDetail } from "./components/ProductDetail";
+import { Sidebar } from "./components/Sidebar";
+import { useSidebar } from "./context/SidebarContext";
+import { ToastHost } from "./components/ToastHost";
+
+const SidebarToggle = () => {
+  const { toggle } = useSidebar();
+  return (
+    <button onClick={toggle} style={{ marginLeft: "15px" }}>
+      Toggle Sidebar
+    </button>
+  );
+};
 
 function App() {
   const isFetching = useIsFetching();
@@ -22,12 +34,16 @@ function App() {
           About
         </Link>
         <Link to="/products">Products (Homework)</Link>
+        <SidebarToggle />
         {isFetching > 0 && (
           <span style={{ marginLeft: "20px", color: "orange" }}>
             Fetching...
           </span>
         )}
       </nav>
+
+      <Sidebar />
+      <ToastHost />
 
       <Routes>
         <Route path="/" element={<UserGreeter />} />
