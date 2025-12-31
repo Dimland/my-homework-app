@@ -1,0 +1,18 @@
+{
+    "list": {
+        "title": "Products",
+        "count_one": "Showing <1>{{count}}</1> product",
+        "count_other": "Showing <1>{{count}}</1> products"
+    },
+    "columns": {
+        "title": "Title",
+        "price": "Price",
+        "category": "Category",
+        "image": "Image",
+        "actions": "Actions"
+    },
+    "details": {
+        "back": "Back to list",
+        "description": "Description"
+    }
+}

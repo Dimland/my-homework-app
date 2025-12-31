@@ -1,0 +1,31 @@
+{
+    "header": {
+        "title": "החנות שלי",
+        "language": "שפה",
+        "theme": "ערכת נושא"
+    },
+    "buttons": {
+        "viewDetails": "צפה בפרטים",
+        "addToCart": "הוסף לעגלה"
+    },
+    "status": {
+        "loading": "טוען...",
+        "error": "שגיאה: {{message}}"
+    },
+    "home": {
+        "title": "כרטיס משתמש",
+        "hello": "שלום, <1>{{name}}</1>!",
+        "enterName": "הכנס את שמך:"
+    },
+    "about": {
+        "title": "אודות",
+        "description": "זוהי אפליקציית הלימוד שלי ללימוד React."
+    },
+    "sidebar": {
+        "title": "עגלת קניות",
+        "close": "סגור X",
+        "empty": "העגלה שלך ריקה.",
+        "remove": "הסר",
+        "total": "סה\"כ: {{price}}"
+    }
+}

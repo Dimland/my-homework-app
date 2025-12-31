@@ -1,0 +1,18 @@
+{
+    "list": {
+        "title": "מוצרים",
+        "count_one": "מציג מוצר <1>{{count}}</1>",
+        "count_other": "מציג <1>{{count}}</1> מוצרים"
+    },
+    "columns": {
+        "title": "שם המוצר",
+        "price": "מחיר",
+        "category": "קטגוריה",
+        "image": "תמונה",
+        "actions": "פעולות"
+    },
+    "details": {
+        "back": "חזרה לרשימה",
+        "description": "תיאור"
+    }
+}
