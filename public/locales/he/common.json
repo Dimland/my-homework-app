@@ -1,6 +1,8 @@
 {
     "header": {
         "title": "החנות שלי",
+        "menu_about": "אודות",
+        "menu_products": "מוצרים",
         "language": "שפה",
         "theme": "ערכת נושא"
     },

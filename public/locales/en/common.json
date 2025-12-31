@@ -1,6 +1,8 @@
 {
     "header": {
         "title": "My Shop",
+        "menu_about": "About",
+        "menu_products": "Products",
         "language": "Language",
         "theme": "Theme"
     },

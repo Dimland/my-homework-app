@@ -47,10 +47,10 @@ function App() {
           {t("header.title")}
         </Link>
         <Link to="/about" style={{ marginInlineEnd: "15px" }}>
-          About
+          {t("header.menu_about")}
         </Link>
         <Link to="/products" style={{ marginInlineEnd: "15px" }}>
-          Products
+          {t("header.menu_products")}
         </Link>
 
         <SidebarToggle />

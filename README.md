@@ -24,7 +24,7 @@ Starting Advanced 1 from commit `HEAD`. API used: DummyJSON (https://dummyjson.c
 ### Step 3: Language Switcher & Persistence
 
 - **Switcher:** Added to Header. Toggles between EN and HE.
-- **Persistence:** Handled by `i18next-browser-languagedetector` (localStorage).
+- **Persistence:** We use a language detector plugin that automatically saves the user's choice to the browser's LocalStorage. When the app loads, it checks this storage to restore the previously selected language, ensuring the user's preference is remembered across sessions.
 
 ### Step 4: RTL Mode
 
@@ -32,6 +32,8 @@ Starting Advanced 1 from commit `HEAD`. API used: DummyJSON (https://dummyjson.c
 - **Fixes:**
   1. Updated `margin-right` to `margin-inline-end` in Header links (`App.tsx`) to support correct spacing in RTL.
   2. PrimeReact components automatically handle RTL direction based on `dir="rtl"`.
+  3. **Sidebar Position:** Fixed hardcoded `right: 0` to `inset-inline-end: 0` so the sidebar appears on the logical "end" side (left in RTL).
+  4. **Text Alignment:** Changed `text-align: left` to `text-align: start` in Product Details to correctly align text to the right in RTL mode.
 
 ### Step 5: PrimeReact + DataTable
 
@@ -48,11 +50,36 @@ Starting Advanced 1 from commit `HEAD`. API used: DummyJSON (https://dummyjson.c
 
 ### Bonus A: Price Formatting
 
+_(Add your screenshot here, e.g., `docs/price-formatting.png`)_
+
 - **Implementation:** Used `Intl.NumberFormat` in `ProductsList` and `ProductDetail` to format prices according to the selected locale (e.g., `$` for EN, correct formatting for HE).
 
 ## Screenshots
 
-_(Please refer to the running application for live verification)_
+### PrimeReact DataTable
+
+_(Add your screenshot here, e.g., `docs/datatable.png`)_
+
+**Implemented Features:**
+
+1. **Sorting:** Enabled on Title, Price, and Category columns.
+2. **Pagination:** Built-in paginator with 5 rows per page and page size options.
+
+### RTL Mode
+
+_(Add your screenshot here, e.g., `docs/rtl-mode.png`)_
+
+**RTL Fixes:**
+
+- Sidebar position (inset-inline-end).
+- Text alignment in details (text-align: start).
+
+### Language & Theme Switching
+
+_(Add your screenshot here)_
+
+- Language persistence via LocalStorage.
+- Theme persistence via LocalStorage.
 
 ---
 
